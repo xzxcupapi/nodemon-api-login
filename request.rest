@@ -17,3 +17,15 @@ GET http://localhost:5000/users/1
 ###
 //Get All User
 GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/form
+###
+POST http://localhost:5000/form
+Content-Type: application/json
+{
+  "namalengkap": "Agus",
+  "email": "agus@gmail.com",
+  "tentang": "Testterrr",
+  "pesan": "ini contoh testing"
+}
