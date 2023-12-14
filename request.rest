@@ -1,0 +1,17 @@
+//Testing Hunikita Kontrakan & Kostan Platform
+//Create a User
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Testt",
+    "email": "test@gmail.com",
+    "password": "12345678",
+    "confPassword": "12345678",
+    "role": "Pemilik Properti"
+
+}
+
+###
+//Get All User
+GET http://localhost:5000/users
