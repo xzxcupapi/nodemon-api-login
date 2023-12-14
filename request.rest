@@ -11,7 +11,9 @@ Content-Type: application/json
     "role": "Pemilik Properti"
 
 }
-
+###
+//Get User By Id
+GET http://localhost:5000/users/1
 ###
 //Get All User
 GET http://localhost:5000/users
