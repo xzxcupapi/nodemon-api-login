@@ -39,7 +39,3 @@ export const createForm = async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 };
-
-export const updateForm = (req, res) => {};
-
-export const deleteForm = (req, res) => {};
