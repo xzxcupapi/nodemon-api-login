@@ -1,20 +1,21 @@
-import multer from "multer";
+const multer = require("multer");
 
-// Konfigurasi Multer untuk menyimpan file gambar di sistem file server
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/"); // Menentukan folder penyimpanan file
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname); // Menentukan nama file
-  },
-});
+// Konfigurasi storage untuk menyimpan file
+const storage = multer.memoryStorage(); // Menyimpan file dalam bentuk buffer di memori
 
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5, // Contoh: batasan ukuran file 5 MB
+    fileSize: 5 * 1024 * 1024, // Batasan ukuran file (5 MB)
+  },
+  fileFilter: (req, file, cb) => {
+    // Fungsi untuk menolak file yang bukan gambar
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("File harus berupa gambar"), false);
+    }
   },
 });
 
-export default upload;
+module.exports = upload;

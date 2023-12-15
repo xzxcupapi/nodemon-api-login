@@ -73,15 +73,7 @@ const Products = db.define(
       allowNull: false,
       validate: {
         notEmpty: true,
-        isSmallerThan2MB(value) {
-          if (value.length > 2 * 1024 * 1024) {
-            throw new Error("Ukuran gambar tidak boleh lebih dari 2 MB.");
-          }
-        },
       },
-    },
-    url: {
-      type: DataTypes.STRING,
     },
     userId: {
       type: DataTypes.INTEGER,

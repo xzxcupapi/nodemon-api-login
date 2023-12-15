@@ -48,18 +48,7 @@ GET http://localhost:5000/products
 ###
 
 //create form
-POST http://localhost:5000/products
-Content-Type: application/json
-{
-    "namapemilik": "Jhon Doe",
-    "email": "jhondoe@gmail.com",
-    "nomerhp": "08472742842",
-    "namaproperti": "rukita",
-    "tipeproperti": "kost",
-    "alamat": "Jl. 12 Suraba",
-    "jumlahkamar": "12"
-    foto
-}
+
 
 ###
 
@@ -91,18 +80,19 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/products
 Content-Type: application/json
+
 {
-      "id": 1,
-      "namepemilik": "John Doe",
-      "email": "john@example.com",
-      "nomerhp": "123456789",
-      "namaproperti": "Cozy House",
-      "tipeproperti": "Rumah",
-      "alamat": "123 Main Street",
-      "jumlahkamar": 3,
-      "foto": "rr.png", // Path relatif ke lokasi file gambar
-      "userId": 1
-    }
+  "id": 1,
+  "namepemilik": "John Doe",
+  "email": "john@example.com",
+  "nomerhp": "123456789",
+  "namaproperti": "Cozy House",
+  "tipeproperti": "Rumah",
+  "alamat": "123 Main Street",
+  "jumlahkamar": 3,
+  "foto": "1 copy.png", // Path relatif ke lokasi file gambar
+  "userId": 1
+}
 
 ###
 GET http://localhost:5000/products
