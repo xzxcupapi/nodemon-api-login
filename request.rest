@@ -41,6 +41,11 @@ DELETE http://localhost:5000/users/a5e42150-be41-4832-839f-3044481d91be
 
 // TESTING USER END
 ###
+//TESTING PRODUCT
+GET http://localhost:5000/products
+
+
+###
 
 //create form
 POST http://localhost:5000/products
@@ -82,3 +87,22 @@ Content-Type: application/json
    "email": "jhondoe@gmail.com",
     "password": "12345678" 
 }
+
+###
+POST http://localhost:5000/products
+Content-Type: application/json
+{
+      "id": 1,
+      "namepemilik": "John Doe",
+      "email": "john@example.com",
+      "nomerhp": "123456789",
+      "namaproperti": "Cozy House",
+      "tipeproperti": "Rumah",
+      "alamat": "123 Main Street",
+      "jumlahkamar": 3,
+      "foto": "rr.png", // Path relatif ke lokasi file gambar
+      "userId": 1
+    }
+
+###
+GET http://localhost:5000/products
