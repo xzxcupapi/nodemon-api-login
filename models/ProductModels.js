@@ -69,7 +69,7 @@ const Products = db.define(
       },
     },
     foto: {
-      type: DataTypes.BLOB("long"),
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
