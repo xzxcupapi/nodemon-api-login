@@ -5,28 +5,51 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "Testt",
-    "email": "test@gmail.com",
+    "name": "Jhon Doe",
+    "email": "jhondoe@gmail.com",
     "password": "12345678",
     "confPassword": "12345678",
     "role": "Pemilik Properti"
 
 }
-###
-//Get User By Id
-GET http://localhost:5000/users/1
+
 ###
 //Get All User
 GET http://localhost:5000/users
 
 ###
-GET http://localhost:5000/form
+//Get Single Data User By UUID
+GET http://localhost:5000/users/a5e42150-be41-4832-839f-3044481d91be
+
 ###
-POST http://localhost:5000/form
+//Update User
+PATCH  http://localhost:5000/users/a5e42150-be41-4832-839f-3044481d91be
+Content-Type: application/json
+
+{
+    "name": "Test Kedua",
+    "email": "test@gmail.com",
+    "password": "",
+    "confPassword": "",
+    "role": "Pemilik Properti"
+
+}
+
+###
+//Delete User 
+DELETE http://localhost:5000/users/a5e42150-be41-4832-839f-3044481d91be
+
+// TESTING USER END
+###
+POST http://localhost:5000/products
 Content-Type: application/json
 {
-  "namalengkap": "Agus",
-  "email": "agus@gmail.com",
-  "tentang": "Testterrr",
-  "pesan": "ini contoh testing"
+    "namapemilik": "Jhon Doe",
+    "email": "jhondoe@gmail.com",
+    "nomerhp": "08472742842",
+    "namaproperti": "rukita",
+    "tipeproperti": "kost",
+    "alamat": "Jl. 12 Suraba",
+    "jumlahkamar": "12"
+    foto
 }
