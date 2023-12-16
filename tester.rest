@@ -21,3 +21,66 @@ DELETE http://localhost:5000/logout
 ###
 
 
+### Product
+
+### Get All Product
+GET http://localhost:5000/products
+###
+
+### Get Product by Id
+# Ganti nomer yang ada dengan id
+GET http://localhost:5000/products/:id
+###
+
+### Create Iklan Properti
+Lakukan pengujian di Postman
+dengan ketentuan berikut di dalam body menggunakan form data
+
+namepemilik = value
+email = value //type text
+nomerhp = value //type text
+title = namaproperti //type text
+tipeproperti = value //type text
+alamat = value //type text
+jumlahkamar = value //type text
+file = foto //type file
+userId = value
+user id ini nantinya bisa digunakan untuk metode GET by id
+
+### Update Iklan Properti ###
+Lakukan pengujian di Postman
+dengan ketentuan berikut di dalam body menggunakan form data
+
+namepemilik = value
+email = value //type text
+nomerhp = value //type text
+title = namaproperti //type text
+tipeproperti = value //type text
+alamat = value //type text
+jumlahkamar = value //type text
+file = foto //type file
+###
+
+### Delete Iklan Properti by ID
+DELETE  http://localhost:5000/products/2
+###
+
+### FORM 
+
+### Get All Form
+GET  http://localhost:5000/form
+###
+
+### Get Form by Id
+GET  http://localhost:5000/form/1
+
+### Create Form
+POST http://localhost:5000/form
+Content-Type: application/json
+
+{
+    "namalengkap": "Testing Form",
+    "email": "testingform@gmail.com",
+    "tentang": "Form Testing",
+    "pesan": "ini adalah pengujian untuk form"
+}

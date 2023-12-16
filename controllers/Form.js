@@ -2,10 +2,8 @@ import Form from "../models/FormModel.js";
 
 export const getForm = async (req, res) => {
   try {
-    const response = await User.findAll({
-      attributes: ["name", "email", "tentang", "pesan"],
-    });
-    res.status(200).json(response);
+    const response = await Form.findAll();
+    res.json(response);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
@@ -13,10 +11,10 @@ export const getForm = async (req, res) => {
 
 export const getFormById = async (req, res) => {
   try {
-    const response = await User.findOne({
+    const response = await Form.findOne({
       attributes: ["uuid", "namalengkap", "email", "tentang", "pesan"],
       where: {
-        uuid: req.params.id,
+        id: req.params.id,
       },
     });
     res.status(200).json(response);
