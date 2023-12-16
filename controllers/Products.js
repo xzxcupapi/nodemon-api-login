@@ -1,23 +1,12 @@
 import Product from "../models/ProductModels.js";
 import path from "path";
-import { writeFile } from "fs/promises";
 
 export const getProducts = async (req, res) => {
   try {
-    const response = await Product.findAll({
-      attributes: [
-        "uuid",
-        "namepemilik",
-        "nomerhp",
-        "namaproperti",
-        "tipeproperti",
-        "alamat",
-        "foto",
-      ],
-    });
-    res.status(200).json(response);
+    const response = await Product.findAll();
+    res.json(response);
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    res.status(500)({ msg: error.message });
   }
 };
 
@@ -25,16 +14,7 @@ export const getProductById = async (req, res) => {
   try {
     const response = await Product.findOne({
       where: {
-        attributes: [
-          "uuid",
-          "namepemilik",
-          "nomerhp",
-          "namaproperti",
-          "tipeproperti",
-          "alamat",
-          "foto",
-        ],
-        tipeproperti: req.params.tipeproperti,
+        id: req.params.id,
       },
     });
     res.status(200).json(response);
@@ -50,24 +30,25 @@ export const createProduct = async (req, res) => {
     namepemilik,
     email,
     nomerhp,
-    namaproperti,
     tipeproperti,
     alamat,
     jumlahkamar,
     userId,
   } = req.body;
+  const namaproperti = req.body.title;
   const file = req.files.file;
-  const fileSize = file.data.lenth;
-  const ext = path.extname(file.originalname);
+  const fileSize = file.data.length;
+  const ext = path.extname(file.name);
   const fileName = file.md5 + ext;
+  const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
   const allowedType = [".png", ".jpg", ".jpeg"];
 
-  if (allowedType.includes(ext.toLocaleLowerCase()))
+  if (!allowedType.includes(ext.toLocaleLowerCase()))
     return res.status(422).json({ msg: "Invalid Images" });
-  if (fileSize > 2000000)
-    return res.status(422).json({ msg: "Images must be less 2mb" });
+  if (fileSize > 5000000)
+    return res.status(422).json({ msg: "Image must be less 2mb" });
 
-  file.mv(`./uploads/products/${fileName}`, async (err) => {
+  file.mv(`./uploads/images/${fileName}`, async (err) => {
     if (err) return res.status(500).json({ msg: err.message });
     try {
       await Product.create({
@@ -79,6 +60,7 @@ export const createProduct = async (req, res) => {
         alamat: alamat,
         jumlahkamar: jumlahkamar,
         foto: fileName,
+        url: url,
         userId: userId,
       });
       res.status(201).json({ msg: "Product Created Succesfully" });

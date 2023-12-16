@@ -69,11 +69,14 @@ const Products = db.define(
       },
     },
     foto: {
-      type: DataTypes.BLOB("long"),
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
+    },
+    url: {
+      type: DataTypes.STRING,
     },
     userId: {
       type: DataTypes.INTEGER,
