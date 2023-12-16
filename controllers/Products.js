@@ -1,5 +1,6 @@
 import Product from "../models/ProductModels.js";
 import path from "path";
+import fs from "fs";
 
 export const getProducts = async (req, res) => {
   try {
@@ -63,7 +64,7 @@ export const createProduct = async (req, res) => {
         url: url,
         userId: userId,
       });
-      res.status(201).json({ msg: "Product Created Succesfully" });
+      res.status(201).json({ msg: "Iklan Properti Created Succesfully" });
     } catch (error) {
       console.log(error.message);
     }
@@ -73,9 +74,22 @@ export const createProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {};
 
 export const deleteProduct = async (req, res) => {
-  const response = await Product.findOne({
+  const product = await Product.findOne({
     where: {
       id: req.params.id,
     },
   });
+  if (!product) return res.status(404).json({ msg: "No Product Found" });
+  try {
+    const filepath = `./uploads/images/${product.foto}`;
+    fs.unlinkSync(filepath);
+    await Product.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    resizeTo.status(200).json({ msg: "Iklan Properti Deleted Successfully" });
+  } catch (error) {
+    console.log(error.message);
+  }
 };

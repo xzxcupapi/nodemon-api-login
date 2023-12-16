@@ -48,7 +48,7 @@ app.use(ProductRoute);
 app.use(FormRoute);
 app.use(AuthRoute);
 
-// store.sync();
+store.sync();
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Server up and running...");
