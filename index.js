@@ -42,6 +42,7 @@ app.use(
 );
 app.use(express.json());
 app.use(FileUpload());
+app.use(express.static("uploads"));
 app.use(UserRoute);
 app.use(ProductRoute);
 app.use(FormRoute);

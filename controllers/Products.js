@@ -70,6 +70,12 @@ export const createProduct = async (req, res) => {
   });
 };
 
-export const updateProduct = (req, res) => {};
+export const updateProduct = async (req, res) => {};
 
-export const deleteProduct = (req, res) => {};
+export const deleteProduct = async (req, res) => {
+  const response = await Product.findOne({
+    where: {
+      id: req.params.id,
+    },
+  });
+};
